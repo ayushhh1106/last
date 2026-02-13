@@ -1,0 +1,342 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For My Soan Papdi ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+min-height:100vh;
+background:linear-gradient(-45deg,#ff758c,#ff7eb3,#ffd3e0,#fff0f5);
+background-size:400% 400%;
+animation:bg 12s ease infinite;
+overflow:hidden;
+color:white;
+}
+
+@keyframes bg{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+/* Glass UI */
+.glass{
+backdrop-filter:blur(18px);
+background:rgba(255,255,255,0.15);
+border:1px solid rgba(255,255,255,0.25);
+border-radius:30px;
+box-shadow:0 10px 40px rgba(255,0,120,0.25);
+}
+
+/* HERO */
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:30px;
+  color: black;
+
+}
+
+.hero h1{
+font-size:4rem;
+text-shadow:0 10px 40px rgba(255,0,120,.6);
+}
+
+.hero p{
+margin-top:20px;
+opacity:.9;
+}
+
+.btn{
+margin-top:30px;
+padding:15px 35px;
+border:none;
+border-radius:50px;
+background:linear-gradient(45deg,#ff4d6d,#ff8fab);
+color:rgb(0, 0, 0);
+font-size:14px;
+cursor:pointer;
+box-shadow:0 6px 25px rgba(255,0,120,.5);
+transition:.4s;
+}
+
+.btn:hover{
+transform:translateY(-6px) scale(1.05);
+}
+
+/* SECOND PAGE */
+#secondPage{
+position:fixed;
+top:0;
+left:100%;
+width:100%;
+height:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+transition:1s;
+z-index:5;
+}
+
+#secondPage.show{
+left:0;
+}
+.letterBox p{
+margin-top:0px;
+}
+
+.letterBox{
+max-width:1080px;
+padding:45px;
+font-size:.85rem;      /* SMALL FONT */
+line-height:1.5;      /* better readability */
+white-space:pre-line;
+
+color:#5a0f2e;
+background:rgba(255,255,255,0.35);
+
+/* IMPORTANT FIX */
+max-height:80vh;      /* full visible */
+overflow-y:auto;      /* scroll if long */
+}
+
+/* Countdown */
+.countdown{
+position:fixed;
+top:20px;
+right:20px;
+padding:20px;
+}
+
+#timer{
+font-size:1.5rem;
+}
+
+/* Cursor */
+.cursor{
+position:fixed;
+pointer-events:none;
+font-size:22px;
+transform:translate(-50%,-50%);
+z-index:999;
+}
+
+/* Hearts */
+.heart{
+position:fixed;
+bottom:-20px;
+animation:float linear forwards;
+}
+
+@keyframes float{
+to{ transform:translateY(-110vh); }
+}
+
+/* Sparkles */
+.sparkle{
+position:fixed;
+width:6px;
+height:6px;
+background:white;
+border-radius:50%;
+animation:spark 3s linear forwards;
+}
+
+@keyframes spark{
+to{
+transform:translateY(-100vh);
+opacity:0;
+}
+}
+
+/* Music */
+.music{
+position:fixed;
+bottom:20px;
+right:20px;
+}
+
+/* Mobile */
+@media(max-width:768px){
+.hero h1{font-size:2.4rem;}
+.letterBox{padding:35px;}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="cursor">😘</div>
+
+<!-- HERO -->
+<div class="hero glass">
+<h1>For My Soan Papdi ❤️</h1>
+<p>You are my today and all of my tomorrows and You’re my sweetest surprise, Soanpapdi — lighter than air, impossible to forget, and the love I choose today and every day ❤️
+</p>
+
+<button class="btn" onclick="openSecondPage()">
+Open Your Surprise 💌
+</button>
+</div>
+
+<!-- SECOND PAGE -->
+<div id="secondPage">
+<div class="glass letterBox">
+<h2>My Love Letter for my soan papdi ❤️</h2>
+<p id="letter"></p>
+<button class="btn" onclick="closeSecondPage()">← Go Back</button>
+</div>
+</div>
+
+<!-- COUNTDOWN -->
+<div class="glass countdown">
+Countdown ❤️
+<div id="timer"></div>
+</div>
+
+
+<script>
+
+//////////// HEART CURSOR
+const cursor=document.querySelector(".cursor");
+document.addEventListener("mousemove",(e)=>{
+cursor.style.left=e.clientX+"px";
+cursor.style.top=e.clientY+"px";
+});
+
+//////////// FLOATING HEARTS
+setInterval(()=>{
+const heart=document.createElement("div");
+heart.innerHTML="❤️";
+heart.className="heart";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(Math.random()*20+10)+"px";
+heart.style.animationDuration=(Math.random()*5+5)+"s";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),8000);
+},300);
+
+//////////// SPARKLES
+setInterval(()=>{
+const s=document.createElement("div");
+s.className="sparkle";
+s.style.left=Math.random()*100+"vw";
+document.body.appendChild(s);
+setTimeout(()=>s.remove(),3000);
+},120);
+
+//////////// SECOND PAGE
+function openSecondPage(){
+document.getElementById("secondPage").classList.add("show");
+startTyping();
+}
+
+function closeSecondPage(){
+document.getElementById("secondPage").classList.remove("show");
+}
+
+//////////// LOVE LETTER (SAFE VERSION)
+
+const text=`Happy Valentine’s Day meri Soan Papdi ❤️🌹
+Kabhi kabhi main chup ho jaata hoon aur bas yeh sochta hoon ki meri life tumse pehle kaisi thi… aur phir realize hota hai ki shayad main tab sirf jee raha tha, lekin tumhare aane ke baad maine sach mein jeena start kiya. Tum meri life ka woh ehsaas ho jo words mein explain karna mushkil hai. Tumhe dekhkar jo feeling aati hai na, woh excitement bhi hai, sukoon bhi hai, aur ek ajeeb sa comfort bhi — jaise finally dil ko uski jagah mil gayi ho.
+Mujhe tumhari har cheez se pyaar hai… tumhari smile se, tumhari aankhon ki chamak se, tumhari baaton ki softness se, tumhare thode se nakhre se, aur hatta ki tumhare gusse se bhi. Kyunki yeh sab milkar “tum” bante ho, aur tum meri sabse favourite insaan ho. Jab tum hasta ho toh lagta hai jaise duniya thodi aur beautiful ho gayi, aur jab tum mere paas hoti ho toh lagta hai mujhe aur kuch nahi chahiye
+Sach kahun toh pyaar ka exact matlab mujhe tumse milne ke baad samajh aaya. Pyaar sirf “I love you” bol dena nahi hota… pyaar woh hota hai jab kisi ek insaan ki presence se hi tumhara din better ho jaaye. Pyaar woh hota hai jab tum automatically unke future ka part banna chaho. Pyaar woh hota hai jab unki khushi tumhari priority ban jaaye. Aur mujhe yeh sab tumhare saath feel hota hai, har single day.
+Main perfect nahi hoon, aur shayad kabhi ho bhi nahi paunga. Kabhi galtiyaan karunga, kabhi tumhe irritate karunga, kabhi childish behave karunga… lekin ek cheez main hamesha sahi rakhunga — mera dil, jo sirf tumhara hai. Main har din better banna chahta hoon, sirf isliye taaki tumhe woh love de paun jo tum deserve karti ho.
+Main tumhare saath sirf present nahi, pura future dekhna chahta hoon. Sochta hoon ek aisi life jahan subah tumhari good morning se start ho aur raat tumhari awaaz sunte hue end ho. Jahan hum bina kisi reason ke hass padein, random drives pe chale jaayein, stupid si selfies lein, aur life ke har phase mein ek dusre ka haath itna tightly pakde rahein ki koi situation hume alag na kar paaye.
+Agar kabhi life hume test kare, agar kabhi tough days aayein, agar kabhi sab kuch against lage — toh bas itna yaad rakhna, main tumhare saath khada rahunga. Sirf happy moments mein nahi, balki un dino mein bhi jab tumhe lage ki sab kuch heavy ho raha hai. Tum kabhi akeli nahi ho… jab tak main hoon, tumhara ek ghar hamesha mere dil mein rahega.
+Tum meri zaroorat ho, meri aadat ho, meri weakness ho, aur meri sabse badi strength bhi. Tum woh ho jise main har din choose karta hoon, bina force ke, bina doubt ke. Aur agar mujhe hazaar baar bhi choose karna pade, toh main har baar tumhe hi choose karunga.
+Kabhi kabhi main future imagine karta hoon… aur us future mein har jagah tum ho. Tumhari hasi ghar mein goonj rahi hai, tum mujhe kisi choti si baat par daant rahi ho, hum ek dusre ko tease kar rahe hain, aur beech beech mein main bas tumhe dekhkar smile kar raha hoon — thankful ki meri life mein tum ho. Mujhe perfect life nahi chahiye… mujhe bas tumhare saath wali life chahiye.
+Ek aur baat jo shayad main itni clearly kabhi bol nahi paata — tum sirf meri love story nahi ho, tum meri dua ho jo kabool ho gayi. Is duniya mein crores log hain, par mera dil sirf tum par aakar kyun ruk gaya… shayad isliye kyunki tum wahi ho jahan mujhe hamesha hona tha.
+Agar kabhi tumhe lage ki main express kam karta hoon, ya kabhi words find nahi kar pata — toh meri aankhon mein dekhna. Wahan tumhe woh pyaar dikhega jo shayad lafzon se bhi zyada real hai. Mera pyaar loud nahi hai, par deep hai… simple nahi hai, par forever wala hai.
+Main promise nahi karta ki humari life mein problems nahi aayengi… par main yeh zaroor promise karta hoon ki chahe kuch bhi ho jaaye, main kabhi tumhara haath nahi chhodunga. Har argument ke baad tumhe aur tightly pakdunga, har misunderstanding ko solve karunga, aur har din tumhe yeh feel karane ki koshish karunga ki tum meri life ki sabse important person ho.
+Tum meri aaj ho… tum meri kal ho… aur honestly, tumhare bina koi “future” imagine hi nahi hota. Tum mere dil ka woh hissa ho jise main kabhi khona nahi chahta.
+I love you itna ki shayad poori life bhi kam pad jaaye isse express karne ke liye. Aur har din, har moment, har heartbeat ke saath mera pyaar tumhare liye aur zyada badhta jaa raha hai.
+Happy Valentine’s Day once again meri Soan Papdi ❤️
+Agar meri life ek story hai… toh uski sabse beautiful line tum ho.
+`;
+
+let started=false;
+let i=0;
+
+function startTyping(){
+
+if(started) return;
+started=true;
+
+function type(){
+if(i<text.length){
+document.getElementById("letter").innerText=text.substring(0,i);
+i++;
+setTimeout(type,32);
+}
+}
+
+type();
+}
+
+//////////// COUNTDOWN
+function countdown(){
+
+const now=new Date();
+
+const year=
+now.getMonth()===1 && now.getDate()>14
+? now.getFullYear()+1
+: now.getFullYear();
+
+const val=new Date(`Feb 14 ${year} 00:00:00`);
+const diff=val-now;
+
+const d=Math.floor(diff/1000/60/60/24);
+const h=Math.floor(diff/1000/60/60)%24;
+const m=Math.floor(diff/1000/60)%60;
+const s=Math.floor(diff/1000)%60;
+
+document.getElementById("timer").innerHTML=
+`${d}d ${h}h ${m}m ${s}s`;
+
+}
+
+setInterval(countdown,1000);
+
+//////////// MUSIC
+const song=document.getElementById("song");
+
+function toggleMusic(){
+
+if(song.paused){
+song.play();
+event.target.innerText="⏸ Pause";
+}else{
+song.pause();
+event.target.innerText="🎵 Play";
+}
+
+}
+
+</script>
+
+</body>
+</html>
+
